@@ -17,4 +17,5 @@ public enum Ingrediens {
     CHILI,
     REJER,
     TIMIAN,
+    LOEG,
 }
