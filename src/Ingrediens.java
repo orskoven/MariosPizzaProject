@@ -16,4 +16,5 @@ public enum Ingrediens {
     KEBAB,
     CHILI,
     REJER,
+    TIMIAN,
 }
