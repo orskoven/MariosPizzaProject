@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class PhoneOrder extends Order {
-    public PhoneOrder(Pizza[] pizzas, int orderId, String orderName) {
-        super(pizzas, orderId, orderName);
+    public PhoneOrder(Pizza[] pizzas, int orderId, String orderName, int pickupTime) {
+        super(pizzas, orderId, orderName, pickupTime);
     }
 
     @Override
@@ -20,7 +20,9 @@ public class PhoneOrder extends Order {
         } while (i < pizzaNumbersInOrder);
         System.out.println("What is the order name?");
         String orderName = scanner.next();
-        PhoneOrder theOrder = new PhoneOrder(pizzasInOrder, 1, orderName);
+        System.out.println("Please type when the wished pickup time is:");
+        int pickupTime = scanner.nextInt();
+        PhoneOrder theOrder = new PhoneOrder(pizzasInOrder, 1, orderName,pickupTime);
         System.out.println("These are the ordered pizza's:");
         for (Pizza pizza : pizzasInOrder) {
             System.out.println(pizza);
