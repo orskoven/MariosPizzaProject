@@ -45,7 +45,7 @@ public class Order {
                                                                                                                 : new Pizza(14, "Mafia", new Ingrediens[]{Ingrediens.TOMATSAUCE, Ingrediens.OST, Ingrediens.PEPPERONI, Ingrediens.BACON, Ingrediens.LOEG, Ingrediens.OREGANO}, 61);
         return whatPizza;
     }
-    public void getOrder(int orderIdNumber) {
+    public void getOrder(int orderIdNumber, Order order) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("How many pizzas would you like? - please type a number:");
         int pizzaNumbersInOrder = 3;           //scanner.nextInt();
@@ -61,7 +61,7 @@ public class Order {
         String orderName = scanner.next();
         System.out.println("Please type when the wished pickup time is:");
         int pickupTime = scanner.nextInt();
-        Order theOrder = new Order(pizzasInOrder, orderIdNumber, orderName,pickupTime);
+        order = new Order(pizzasInOrder, orderIdNumber, orderName,pickupTime);
         System.out.println("These are the ordered pizza's:");
         for (Pizza pizza : pizzasInOrder) {
             System.out.println(pizza);

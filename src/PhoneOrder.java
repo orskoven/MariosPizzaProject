@@ -6,7 +6,7 @@ public class PhoneOrder extends Order {
     }
 
     @Override
-    public void getOrder(int orderIdNumber) {
+    public void getOrder(int orderIdNumber, Order order) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("How many pizzas would you like? - please type a number:");
         int pizzaNumbersInOrder = 3;           //scanner.nextInt();
@@ -22,7 +22,7 @@ public class PhoneOrder extends Order {
         String orderName = scanner.next();
         System.out.println("Please type when the wished pickup time is:");
         int pickupTime = scanner.nextInt();
-        PhoneOrder theOrder = new PhoneOrder(pizzasInOrder, orderIdNumber, orderName,pickupTime);
+        order = new PhoneOrder(pizzasInOrder, orderIdNumber, orderName,pickupTime);
         System.out.println("These are the ordered pizza's:");
         for (Pizza pizza : pizzasInOrder) {
             System.out.println(pizza);
