@@ -1,30 +1,31 @@
 import java.util.Scanner;
 
 public class InHouseOrder extends Order {
-    private int time;
 
-    public InHouseOrder(Pizza[] pizzas, int orderId, String orderName, int time) {
+
+    public InHouseOrder(Pizza[] pizzas, int orderId, String orderName) {
         super(pizzas, orderId, orderName);
-        this.time = time;
     }
-
-  /*
 
     @Override
-    public static void getOrder(){
+    public void getOrder() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Hvor mange pizzaer skal det være?");
-        int numberOfPizzas = scanner.nextInt();
-        Pizza[] pizzas = new Pizza[numberOfPizzas];
+        System.out.println("How many pizzas would you like? - please type a number:");
+        int pizzaNumbersInOrder = 3;           //scanner.nextInt();
+        Pizza[] pizzasInOrder = new Pizza[pizzaNumbersInOrder];
         int i = 0;
         do {
-            System.out.println("Hvilken pizza?");
-            int pizzaNumberInput = scanner.nextInt();
-            pizzas[i] = getPizza(pizzaNumberInput);
+            System.out.println("Please type the pizza number of choice:");
+            int pizzaNumberChoice = scanner.nextInt();
+            pizzasInOrder[i] = Order.getPizza(pizzaNumberChoice);
             i++;
-
-        } while (pizzas.length > i);
+        } while (i < pizzaNumbersInOrder);
+        System.out.println("What is the order name?");
+        String orderName = scanner.next();
+        InHouseOrder theOrder = new InHouseOrder(pizzasInOrder, 1, orderName);
+        System.out.println("These are the ordered pizza's:");
+        for (Pizza pizza : pizzasInOrder) {
+            System.out.println(pizza);
+        }
     }
-
-     */
 }

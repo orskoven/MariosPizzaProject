@@ -1,14 +1,17 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
-public abstract class Order {
+public class Order {
     private Pizza[] pizzas;
     private int orderId;
     private String orderName;
+    private int pickupTime;
 
-    public Order(Pizza[] pizzas, int orderId, String orderName) {
+    public Order(Pizza[] pizzas, int orderId, String orderName,int pickupTime) {
         this.pizzas = pizzas;
         this.orderId = orderId;
         this.orderName = orderName;
+        this.pickupTime = pickupTime;
     }
 
 
@@ -41,6 +44,28 @@ public abstract class Order {
                                                                                                         (inputPizzaNumber == 13) ? new Pizza(13, "Venezia", new Ingrediens[]{Ingrediens.TOMATSAUCE, Ingrediens.OST, Ingrediens.SKINKE, Ingrediens.BACON, Ingrediens.OREGANO}, 61)
                                                                                                                 : new Pizza(14, "Mafia", new Ingrediens[]{Ingrediens.TOMATSAUCE, Ingrediens.OST, Ingrediens.PEPPERONI, Ingrediens.BACON, Ingrediens.LOEG, Ingrediens.OREGANO}, 61);
         return whatPizza;
+    }
+    public void getOrder() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("How many pizzas would you like? - please type a number:");
+        int pizzaNumbersInOrder = 3;           //scanner.nextInt();
+        Pizza[] pizzasInOrder = new Pizza[pizzaNumbersInOrder];
+        int i = 0;
+        do {
+            System.out.println("Please type the pizza number of choice:");
+            int pizzaNumberChoice = scanner.nextInt();
+            pizzasInOrder[i] = Order.getPizza(pizzaNumberChoice);
+            i++;
+        } while (i < pizzaNumbersInOrder);
+        System.out.println("What is the order name?");
+        String orderName = scanner.next();
+        System.out.println("Please type when the wished pickup time is:");
+        int pickupTime = scanner.nextInt();
+        Order theOrder = new Order(pizzasInOrder, 1, orderName,pickupTime);
+        System.out.println("These are the ordered pizza's:");
+        for (Pizza pizza : pizzasInOrder) {
+            System.out.println(pizza);
+        }
     }
 
         @Override
