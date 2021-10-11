@@ -1,12 +1,14 @@
 import java.util.Scanner;
 
 public class PhoneOrder extends Order {
+    private static Pizza[] pizzas;
+
     public PhoneOrder(Pizza[] pizzas, int orderId, String orderName, int pickupTime) {
-        super(pizzas, orderId, orderName, pickupTime);
+        super(pizzas, orderId, orderName);
     }
 
 
-    public static Order getOrder(int orderIdNumber, Order order) {
+    public static Pizza[] getOrder(int orderIdNumber, Order order) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("How many pizzas would you like? - please type a number:");
         int pizzaNumbersInOrder = 3;           //scanner.nextInt();
@@ -27,6 +29,11 @@ public class PhoneOrder extends Order {
         for (Pizza pizza : pizzasInOrder) {
             System.out.println(pizza);
         }
-        return order;
+        return PhoneOrder.pizzas;
+    }
+
+    @Override
+    public String toString() {
+        return "PhoneOrder{} " + super.toString();
     }
 }

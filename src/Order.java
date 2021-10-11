@@ -6,13 +6,12 @@ public class Order {
     private Pizza[] pizzas;
     private int orderId;
     private String orderName;
-    private int pickupTime;
+    private String pickupTime;
 
-    public Order(Pizza[] pizzas, int orderId, String orderName,int pickupTime) {
+    public Order(Pizza[] pizzas, int orderId, String orderName) {
         this.pizzas = pizzas;
         this.orderId = orderId;
         this.orderName = orderName;
-        this.pickupTime = pickupTime;
     }
 
 
@@ -49,7 +48,7 @@ public class Order {
     public static Order getOrder(int orderIdNumber) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("How many pizzas would you like? - please type a number:");
-        int pizzaNumbersInOrder = 3;           //scanner.nextInt();
+        int pizzaNumbersInOrder = scanner.nextInt();
         Pizza[] pizzasInOrder = new Pizza[pizzaNumbersInOrder];
         int i = 0;
         do {
@@ -61,23 +60,56 @@ public class Order {
         System.out.println("What is the order name?");
         String orderName = scanner.next();
         System.out.println("Please type when the wished pickup time is:");
-        int pickupTime = scanner.nextInt();
-        Order order = new Order(pizzasInOrder, orderIdNumber, orderName,pickupTime);
+        String pickupTime = scanner.next();
+        Order order = new Order(pizzasInOrder, orderIdNumber, orderName);
         System.out.println("These are the ordered pizza's:");
         for (Pizza pizza : pizzasInOrder) {
             System.out.println(pizza);
         }
+
         return order;
     }
+    public static void getOrderInterface() {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Order> allOrders = new ArrayList<>();
+        ArrayList<Order> currentOrders = new ArrayList<>();
+        System.out.println("MARIOS PIZZABAR\n-------------------");
+        int orderIdNumber = 0;
+        do {
+            //Create order choice:
+            System.out.println("Create order:\n• Press 1 - Phone Order\n• Press 2 - In House Order");
+            int alfonsoOrderChoice = scanner.nextInt();
+            if (alfonsoOrderChoice == 1) {
+                System.out.println("You choose creating order from phone!");
+               // Order.showMenuCard();
+                allOrders.add(Order.getOrder(orderIdNumber++));
 
-        @Override
-        public String toString () {
-            return "Order{" +
-                    "pizzas=" + Arrays.toString(pizzas) +
-                    ", orderId=" + orderId +
-                    ", orderName='" + orderName + '\'' +
-                    '}';
-        }
+                //Methods
 
+            } else if (alfonsoOrderChoice == 2) {
+                System.out.println("You choose creating order from disk (inHouse!");
+               // Order.showMenuCard();
+                allOrders.add(Order.getOrder(orderIdNumber++));
+                //Methods
 
+            } else {
+                System.out.println("Please press 1 or 2");
+            }
+
+            System.out.println(allOrders);
+
+        } while (orderIdNumber < 300);
+        System.out.println(allOrders);
     }
+
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "pizzas=" + Arrays.toString(pizzas) +
+                ", orderId=" + orderId +
+                ", orderName='" + orderName + '\'' +
+                ", pickupTime=" + pickupTime +
+                '}';
+    }
+}

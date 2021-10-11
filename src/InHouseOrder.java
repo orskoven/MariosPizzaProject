@@ -2,11 +2,13 @@ import java.util.Scanner;
 
 public class InHouseOrder extends Order {
 
+    private static Pizza[] pizzas;
+
     public InHouseOrder(Pizza[] pizzas, int orderId, String orderName, int pickupTime) {
-        super(pizzas, orderId, orderName, pickupTime);
+        super(pizzas, orderId, orderName);
     }
 
-    public static Order getOrder(int orderIdNumber, Order order) {
+    public static Pizza[] getOrder(int orderIdNumber, Order order) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("How many pizzas would you like? - please type a number:");
         int pizzaNumbersInOrder = 3;           //scanner.nextInt();
@@ -27,6 +29,11 @@ public class InHouseOrder extends Order {
         for (Pizza pizza : pizzasInOrder) {
             System.out.println(pizza);
         }
-        return order;
+        return InHouseOrder.pizzas;
+    }
+
+    @Override
+    public String toString() {
+        return "InHouseOrder{} " + super.toString();
     }
 }
