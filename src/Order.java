@@ -14,17 +14,17 @@ public abstract class Order {
 
     //Methods:
     public static void showMenuCard(){
-        System.out.println("Menu Card:");
-        Pizza [] menuCards = {getPizza(1),getPizza(2),getPizza(3),getPizza(4),getPizza(5),getPizza(6),getPizza(7),getPizza(8),getPizza(9),getPizza(10),getPizza(11),getPizza(12),getPizza(13),getPizza(14)};
+        System.out.println("Menu Card Overview:");
+        Pizza [] menuCards = {getPizza(1),getPizza(2),getPizza(3),
+                getPizza(4),getPizza(5),getPizza(6),getPizza(7),
+                getPizza(8),getPizza(9),getPizza(10),getPizza(11),
+                getPizza(12),getPizza(13),getPizza(14)};
         for (Pizza menuCard :menuCards) {
             System.out.println(menuCard);
         }
 
     }
 
-    public void getOrder(){
-
-    }
     public static Pizza getPizza(int inputPizzaNumber) {
         Pizza whatPizza = (inputPizzaNumber == 1) ? new Pizza(1, "Vesuvio", new Ingrediens[]{Ingrediens.TOMATSAUCE, Ingrediens.OST, Ingrediens.SKINKE, Ingrediens.OREGANO}, 57) :
                 (inputPizzaNumber == 2) ? new Pizza(2, "Amerikaner", new Ingrediens[]{Ingrediens.TOMATSAUCE, Ingrediens.OST, Ingrediens.OKSEFARS, Ingrediens.OREGANO}, 53) :
