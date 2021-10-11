@@ -1,38 +1,40 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
     Scanner scanner = new Scanner(System.in);
-
+    Order[] allOrders = new Order[02];
         System.out.println("MARIOS PIZZABAR\n-------------------");
+        int orderIdNumber = 0;
+        do {
+            //Create order choice:
+            System.out.println("Create order:\n• Press 1 - Phone Order\n• Press 2 - In House Order");
+            int alfonsoOrderChoice = 1;                           //scanner.nextInt();
+            Order order = new Order(null, 0, null, 0);
+            if (alfonsoOrderChoice == 1) {
+                System.out.println("You choose creating order from phone!");
+                Order.showMenuCard();
+                order.getOrder(orderIdNumber++);
 
-        //Create order choice:
-        System.out.println("Create order:\n• Press 1 - Phone Order\n• Press 2 - In House Order");
-        int alfonsoOrderChoice = 1;                           //scanner.nextInt();
+                //Methods
 
-        if (alfonsoOrderChoice == 1){
-            PhoneOrder orderPhone = new PhoneOrder(null,0,null,0);
-            System.out.println("You choose creating order from phone!");
-            Order.showMenuCard();
-            orderPhone.getOrder();
+            } else if (alfonsoOrderChoice == 2) {
+                System.out.println("You choose creating order from disk (inHouse!");
+                Order.showMenuCard();
+                order.getOrder(orderIdNumber++);
 
-            //Methods
+                //Methods
 
-        } else if (alfonsoOrderChoice == 2){
-            InHouseOrder orderHouse = new InHouseOrder(null,0,null,0);
-            System.out.println("You choose creating order from disk (inHouse!");
-            Order.showMenuCard();
-            orderHouse.getOrder();
+            } else {
+                System.out.println("Please press 1 or 2");
+            }
 
-            //Methods
+            allOrders[orderIdNumber++] = order;
 
-        }else{
-            System.out.println("Please press 1 or 2");
-        }
+        }while (orderIdNumber < 2);
 
 
-        //InHouseOrder.getOrder();
-
+        System.out.println(Arrays.toString(allOrders));
     }
 }
