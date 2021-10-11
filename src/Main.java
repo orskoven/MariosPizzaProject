@@ -12,26 +12,24 @@ public class Main {
             //Create order choice:
             System.out.println("Create order:\n• Press 1 - Phone Order\n• Press 2 - In House Order");
             int alfonsoOrderChoice = 1;                           //scanner.nextInt();
-           Order order = new Order(null, 0, null, 0);
             if (alfonsoOrderChoice == 1) {
                 System.out.println("You choose creating order from phone!");
                 Order.showMenuCard();
-                order.getOrder(orderIdNumber,order);
+                allOrders.add(Order.getOrder(orderIdNumber++));
 
                 //Methods
 
             } else if (alfonsoOrderChoice == 2) {
                 System.out.println("You choose creating order from disk (inHouse!");
                 Order.showMenuCard();
-                order.getOrder(orderIdNumber,order);
+                allOrders.add(Order.getOrder(orderIdNumber++));
 
                 //Methods
 
             } else {
                 System.out.println("Please press 1 or 2");
             }
-            orderIdNumber++;
-          allOrders.add(order);
+
 
         }while (orderIdNumber < 2);
 

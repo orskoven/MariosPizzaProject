@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -45,7 +46,7 @@ public class Order {
                                                                                                                 : new Pizza(14, "Mafia", new Ingrediens[]{Ingrediens.TOMATSAUCE, Ingrediens.OST, Ingrediens.PEPPERONI, Ingrediens.BACON, Ingrediens.LOEG, Ingrediens.OREGANO}, 61);
         return whatPizza;
     }
-    public void getOrder(int orderIdNumber, Order order) {
+    public static Order getOrder(int orderIdNumber) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("How many pizzas would you like? - please type a number:");
         int pizzaNumbersInOrder = 3;           //scanner.nextInt();
@@ -61,11 +62,12 @@ public class Order {
         String orderName = scanner.next();
         System.out.println("Please type when the wished pickup time is:");
         int pickupTime = scanner.nextInt();
-        order = new Order(pizzasInOrder, orderIdNumber, orderName,pickupTime);
+        Order order = new Order(pizzasInOrder, orderIdNumber, orderName,pickupTime);
         System.out.println("These are the ordered pizza's:");
         for (Pizza pizza : pizzasInOrder) {
             System.out.println(pizza);
         }
+        return order;
     }
 
         @Override
