@@ -12,7 +12,7 @@ public class Main {
         int alfonsoOrderChoice = 1;                           //scanner.nextInt();
 
         if (alfonsoOrderChoice == 1){
-            PhoneOrder orderPhone = new PhoneOrder(null,0,null);
+            PhoneOrder orderPhone = new PhoneOrder(null,0,null,0);
             System.out.println("You choose creating order from phone!");
             Order.showMenuCard();
             orderPhone.getOrder();
@@ -20,7 +20,7 @@ public class Main {
             //Methods
 
         } else if (alfonsoOrderChoice == 2){
-            InHouseOrder orderHouse = new InHouseOrder(null,0,null);
+            InHouseOrder orderHouse = new InHouseOrder(null,0,null,0);
             System.out.println("You choose creating order from disk (inHouse!");
             Order.showMenuCard();
             orderHouse.getOrder();
