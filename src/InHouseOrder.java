@@ -4,7 +4,7 @@ public class InHouseOrder extends Order {
     private int time;
 
     public InHouseOrder(String name, int pizzaNumber, Ingrediens[] ingrediens, int price, Pizza[] pizzas, int orderId, String orderName) {
-        super(name, pizzaNumber, ingrediens, price, pizzas, orderId, orderName);
+        super(pizzaNumber, name, ingrediens, price, pizzas, orderId, orderName);
     }
 
 

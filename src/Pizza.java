@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Pizza {
     private int pizzaNumber;
     private String pizzaName;
@@ -12,7 +14,7 @@ public class Pizza {
         this.price = price;
     }
 
-    public Pizza getPizza(int inputPizzaNumber){
+    public static Pizza getPizza(int inputPizzaNumber){
         Pizza whatPizza = (inputPizzaNumber == 1)?new Pizza(1,"Vesuvio",new Ingrediens[]{Ingrediens.TOMATSAUCE,Ingrediens.OST,Ingrediens.SKINKE,Ingrediens.OREGANO},57):
         (inputPizzaNumber == 2)? new Pizza(2,"Amerikaner",new Ingrediens[]{Ingrediens.TOMATSAUCE,Ingrediens.OST,Ingrediens.OKSEFARS,Ingrediens.OREGANO},53):
         (inputPizzaNumber == 3)? new Pizza(3,"Cacciatore",new Ingrediens[]{Ingrediens.TOMATSAUCE,Ingrediens.OST,Ingrediens.PEPPERONI,Ingrediens.OREGANO},57):
@@ -32,7 +34,15 @@ public class Pizza {
 
     }
 
-
+    @Override
+    public String toString() {
+        return "Pizza{" +
+                "pizzaNumber=" + pizzaNumber +
+                ", pizzaName='" + pizzaName + '\'' +
+                ", ingrediens=" + Arrays.toString(ingrediens) +
+                ", price=" + price +
+                '}';
+    }
 }
 
 

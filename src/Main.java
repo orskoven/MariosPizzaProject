@@ -12,14 +12,14 @@ public class Main {
 
         if (alfonsoOrderChoice == 1){
             System.out.println("You choose creating order from phone!");
+            Order.showMenuCard();
 
-            //Show menuCard method
-            //metode
+            //Methods
 
         } else if (alfonsoOrderChoice == 2){
             System.out.println("You choose creating order from disk (inHouse!");
+            Order.showMenuCard();
 
-            //Show menuCard method
             //Methods
 
         }else{
