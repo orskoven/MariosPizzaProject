@@ -3,13 +3,12 @@ import java.util.Scanner;
 public class InHouseOrder extends Order {
     private int time;
 
-    public InHouseOrder(String name, int pizzaNumber, Ingrediens[] ingrediens, int price, Pizza[] pizzas, int orderId, String orderName) {
-        super(pizzaNumber, name, ingrediens, price, pizzas, orderId, orderName);
+    public InHouseOrder(Pizza[] pizzas, int orderId, String orderName, int time) {
+        super(pizzas, orderId, orderName);
+        this.time = time;
     }
 
-
-
-    /*
+  /*
 
     @Override
     public static void getOrder(){
