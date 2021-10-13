@@ -9,6 +9,7 @@ public class Order {
     private String pickupTime;
     private static ArrayList<Order> listOfCurrentOrders = new ArrayList<Order>();
     private static ArrayList<Order> listOfAllOrders = new ArrayList<Order>();
+    private static int[] todaysPizzaCounter = new int[15];
     private static int counter;
 
     public Order(Pizza[] pizzas, int orderId, String orderName, String pickupTime) {
@@ -68,6 +69,7 @@ public class Order {
                 System.out.println("Please type the pizza number of choice:");
                 int pizzaNumberChoice = scanner.nextInt();
                 pizzasInOrder[i] = Order.getPizza(pizzaNumberChoice);
+                Order.todaysPizzaCounter[pizzaNumberChoice]++;
                 i++;
             } while (i < pizzaNumbersInOrder);
             System.out.println("What is the order name?");
@@ -93,11 +95,10 @@ public class Order {
         int orderIdNumber = 0;
         do {
             //Create order choice:
-            System.out.println("Create order:\n• Press 1 - Phone Order\n• Press 2 - In House Order\n• Press 3 - See all orders\n• Press 4 - pick up order");
+            System.out.println("Create order:\n• Press 1 - Phone Order\n• Press 2 - In House Order\n• Press 3 - See all orders\n• Press 4 - pick up order\n• Press 5 - get today's most ordered pizza");
             int alfonsoOrderChoice = scanner.nextInt();
             if (alfonsoOrderChoice == 1) {
                 orderIdNumber++;
-
                 System.out.println("You choose creating order from phone!");
                // Order.showMenuCard();
                 getdOrder(orderIdNumber, alfonsoOrderChoice);
@@ -142,7 +143,9 @@ public class Order {
 
                listOfCurrentOrders.removeIf(order -> (order.orderId == orderToRemove ));
 
-                ;
+               for (Order e : listOfCurrentOrders) {
+                    System.out.println(e);
+                }
 
                 //listOfCurrentOrders.removeIf(removedOrder -> orderToRemove == orderId);
 
@@ -157,9 +160,10 @@ public class Order {
                     counter = counter + 1;
                 }
 */
-                for (Order e : listOfCurrentOrders) {
-                    System.out.println(e);
-                }
+            } else if (alfonsoOrderChoice == 5) {
+                System.out.println("The most ordered pizza today is: " + Order.getPizza(getIndexOfLargest(todaysPizzaCounter)));
+
+
 
 
 
@@ -171,6 +175,17 @@ public class Order {
 
         } while (orderIdNumber < 300);
 
+    }
+    public static int getIndexOfLargest( int[] array )
+    {
+        if ( array == null || array.length == 0 ) return -1; // null or empty
+
+        int largest = 0;
+        for ( int i = 1; i < array.length; i++ )
+        {
+            if ( array[i] > array[largest] ) largest = i;
+        }
+        return largest; // position of the first largest found
     }
 
     @Override
