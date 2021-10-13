@@ -1,13 +1,15 @@
+import java.sql.Timestamp;
 import java.util.Scanner;
 
 public class InHouseOrder extends Order {
 
     private static Pizza[] pizzas;
 
-    public InHouseOrder(Pizza[] pizzas, int orderId, String orderName, String pickupTime) {
-        super(pizzas, orderId, orderName, pickupTime);
+    public InHouseOrder(Pizza[] pizzas, int orderId, String orderName, Timestamp timeStamp) {
+        super(pizzas, orderId, orderName, timeStamp);
     }
-/*
+
+   /*
     public static Pizza[] getOrder(int orderIdNumber, Order order) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("How many pizzas would you like? - please type a number:");

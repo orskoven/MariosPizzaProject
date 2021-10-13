@@ -1,3 +1,4 @@
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -6,17 +7,17 @@ public class Order {
     private Pizza[] pizzas;
     private int orderId;
     private String orderName;
-    private String pickupTime;
     private static ArrayList<Order> listOfCurrentOrders = new ArrayList<Order>();
     private static ArrayList<Order> listOfAllOrders = new ArrayList<Order>();
     private static int[] todaysPizzaCounter = new int[15];
-    private static int counter;
+    private Timestamp timeStamp;
 
-    public Order(Pizza[] pizzas, int orderId, String orderName, String pickupTime) {
+
+    public Order(Pizza[] pizzas, int orderId, String orderName, Timestamp timeStamp) {
         this.pizzas = pizzas;
         this.orderId = orderId;
         this.orderName = orderName;
-        this.pickupTime = pickupTime;
+        this.timeStamp = timeStamp;
     }
 
 
@@ -51,16 +52,18 @@ public class Order {
         return whatPizza;
     }
 
+    /*
     public static Order getOrder(Pizza[] pizzasInOrder, int orderIdNumber, String orderName, String pickUpTime){
-        Order order = new Order(pizzasInOrder, orderIdNumber, orderName, pickUpTime);
+        Order order = new Order(pizzasInOrder, orderIdNumber, orderName, );
         return order;
     }
 
+     */
+
     public static Order getdOrder(int orderIdNumber, int input) {
 
-        Order order = new Order(null, orderIdNumber, null, null);
 
-            Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
             System.out.println("How many pizzas would you like? - please type a number:");
             int pizzaNumbersInOrder = scanner.nextInt();
             Pizza[] pizzasInOrder = new Pizza[pizzaNumbersInOrder];
@@ -76,7 +79,7 @@ public class Order {
             String orderName = scanner.next();
             System.out.println("Please type when the wished pickup time is:");
             String pickupTime = scanner.next();
-            order = new Order(pizzasInOrder, orderIdNumber, orderName, pickupTime);
+            Order order = new Order(pizzasInOrder, orderIdNumber, orderName, TimeStampExample.getTimeStamp());
 
             listOfCurrentOrders.add(order);
 
@@ -188,13 +191,15 @@ public class Order {
         return largest; // position of the first largest found
     }
 
+
     @Override
     public String toString() {
         return "Ordernumber " + this.orderId  +
                 "pizzas=" + Arrays.toString(pizzas) +
                 ", orderId=" + orderId +
                 ", orderName='" + orderName + '\'' +
-                ", pickupTime=" + pickupTime +
+                ", timeStamp=" + timeStamp +
                 '}';
     }
+
 }
