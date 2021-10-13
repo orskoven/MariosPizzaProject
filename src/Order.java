@@ -9,6 +9,7 @@ public class Order {
     private String pickupTime;
     private static ArrayList<Order> listOfCurrentOrders = new ArrayList<Order>();
     private static ArrayList<Order> listOfAllOrders = new ArrayList<Order>();
+    private static int counter;
 
     public Order(Pizza[] pizzas, int orderId, String orderName, String pickupTime) {
         this.pizzas = pizzas;
@@ -96,6 +97,7 @@ public class Order {
             int alfonsoOrderChoice = scanner.nextInt();
             if (alfonsoOrderChoice == 1) {
                 orderIdNumber++;
+
                 System.out.println("You choose creating order from phone!");
                // Order.showMenuCard();
                 getdOrder(orderIdNumber, alfonsoOrderChoice);
@@ -105,6 +107,7 @@ public class Order {
 
             } else if (alfonsoOrderChoice == 2) {
                 orderIdNumber++;
+
                 System.out.println("You choose creating order from disk (inHouse!");
                 // Order.showMenuCard();
                 getdOrder(orderIdNumber, alfonsoOrderChoice);
@@ -125,8 +128,9 @@ public class Order {
                 for (Order e : listOfCurrentOrders) {
                     System.out.println(e);
                 }
-/*
-                int orderToRemove = scanner.nextInt()-1;
+
+                int orderToRemove = scanner.nextInt();
+                /*
                 Order order = new Order(null, orderIdNumber, null, null);
                 listOfCurrentOrders.set(orderToRemove,order);
                 */
@@ -135,10 +139,24 @@ public class Order {
 
 
 
-                listOfCurrentOrders.remove(orderToRemove - listOfCurrentOrders.size());
 
-                 */
+               listOfCurrentOrders.removeIf(order -> (order.orderId == orderToRemove ));
 
+                ;
+
+                //listOfCurrentOrders.removeIf(removedOrder -> orderToRemove == orderId);
+
+
+/*
+                counter = 0;
+                if (orderToRemove > listOfCurrentOrders.size() ) {
+                    listOfCurrentOrders.remove(orderToRemove);
+                    counter = counter + 1;
+                } else {
+                    listOfCurrentOrders.remove(orderToRemove);
+                    counter = counter + 1;
+                }
+*/
                 for (Order e : listOfCurrentOrders) {
                     System.out.println(e);
                 }
@@ -154,7 +172,6 @@ public class Order {
         } while (orderIdNumber < 300);
 
     }
-
 
     @Override
     public String toString() {
