@@ -3,11 +3,10 @@ import java.util.Scanner;
 public class PhoneOrder extends Order {
     private static Pizza[] pizzas;
 
-    public PhoneOrder(Pizza[] pizzas, int orderId, String orderName, int pickupTime) {
-        super(pizzas, orderId, orderName);
+    public PhoneOrder(Pizza[] pizzas, int orderId, String orderName, String pickupTime) {
+        super(pizzas, orderId, orderName, pickupTime);
     }
-
-
+/*
     public static Pizza[] getOrder(int orderIdNumber, Order order) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("How many pizzas would you like? - please type a number:");
@@ -31,7 +30,7 @@ public class PhoneOrder extends Order {
         }
         return PhoneOrder.pizzas;
     }
-
+*/
     @Override
     public String toString() {
         return "PhoneOrder{} " + super.toString();

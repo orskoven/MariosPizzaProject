@@ -7,11 +7,14 @@ public class Order {
     private int orderId;
     private String orderName;
     private String pickupTime;
+    private static ArrayList<Order> listOfCurrentOrders = new ArrayList<Order>();
+    private static ArrayList<Order> listOfAllOrders = new ArrayList<Order>();
 
-    public Order(Pizza[] pizzas, int orderId, String orderName) {
+    public Order(Pizza[] pizzas, int orderId, String orderName, String pickupTime) {
         this.pizzas = pizzas;
         this.orderId = orderId;
         this.orderName = orderName;
+        this.pickupTime = pickupTime;
     }
 
 
@@ -45,67 +48,117 @@ public class Order {
                                                                                                                 : new Pizza(14, "Mafia", new Ingrediens[]{Ingrediens.TOMATSAUCE, Ingrediens.OST, Ingrediens.PEPPERONI, Ingrediens.BACON, Ingrediens.LOEG, Ingrediens.OREGANO}, 61);
         return whatPizza;
     }
-    public static Order getOrder(int orderIdNumber) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("How many pizzas would you like? - please type a number:");
-        int pizzaNumbersInOrder = scanner.nextInt();
-        Pizza[] pizzasInOrder = new Pizza[pizzaNumbersInOrder];
-        int i = 0;
-        do {
-            System.out.println("Please type the pizza number of choice:");
-            int pizzaNumberChoice = scanner.nextInt();
-            pizzasInOrder[i] = Order.getPizza(pizzaNumberChoice);
-            i++;
-        } while (i < pizzaNumbersInOrder);
-        System.out.println("What is the order name?");
-        String orderName = scanner.next();
-        System.out.println("Please type when the wished pickup time is:");
-        String pickupTime = scanner.next();
-        Order order = new Order(pizzasInOrder, orderIdNumber, orderName);
-        System.out.println("These are the ordered pizza's:");
-        for (Pizza pizza : pizzasInOrder) {
-            System.out.println(pizza);
-        }
 
+    public static Order getOrder(Pizza[] pizzasInOrder, int orderIdNumber, String orderName, String pickUpTime){
+        Order order = new Order(pizzasInOrder, orderIdNumber, orderName, pickUpTime);
         return order;
     }
+
+    public static Order getdOrder(int orderIdNumber, int input) {
+
+        Order order = new Order(null, orderIdNumber, null, null);
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("How many pizzas would you like? - please type a number:");
+            int pizzaNumbersInOrder = scanner.nextInt();
+            Pizza[] pizzasInOrder = new Pizza[pizzaNumbersInOrder];
+            int i = 0;
+            do {
+                System.out.println("Please type the pizza number of choice:");
+                int pizzaNumberChoice = scanner.nextInt();
+                pizzasInOrder[i] = Order.getPizza(pizzaNumberChoice);
+                i++;
+            } while (i < pizzaNumbersInOrder);
+            System.out.println("What is the order name?");
+            String orderName = scanner.next();
+            System.out.println("Please type when the wished pickup time is:");
+            String pickupTime = scanner.next();
+            order = new Order(pizzasInOrder, orderIdNumber, orderName, pickupTime);
+
+            listOfCurrentOrders.add(order);
+
+            System.out.println("These are the ordered pizza's:");
+            for (Pizza pizza : pizzasInOrder) {
+                System.out.println(pizza);
+                //return order;
+            }
+            return order;
+    }
+
     public static void getOrderInterface() {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Order> allOrders = new ArrayList<>();
-        ArrayList<Order> currentOrders = new ArrayList<>();
+
         System.out.println("MARIOS PIZZABAR\n-------------------");
         int orderIdNumber = 0;
         do {
             //Create order choice:
-            System.out.println("Create order:\n• Press 1 - Phone Order\n• Press 2 - In House Order");
+            System.out.println("Create order:\n• Press 1 - Phone Order\n• Press 2 - In House Order\n• Press 3 - See all orders\n• Press 4 - pick up order");
             int alfonsoOrderChoice = scanner.nextInt();
             if (alfonsoOrderChoice == 1) {
+                orderIdNumber++;
                 System.out.println("You choose creating order from phone!");
                // Order.showMenuCard();
-                allOrders.add(Order.getOrder(orderIdNumber++));
+                getdOrder(orderIdNumber, alfonsoOrderChoice);
+
 
                 //Methods
 
             } else if (alfonsoOrderChoice == 2) {
+                orderIdNumber++;
                 System.out.println("You choose creating order from disk (inHouse!");
-               // Order.showMenuCard();
-                allOrders.add(Order.getOrder(orderIdNumber++));
+                // Order.showMenuCard();
+                getdOrder(orderIdNumber, alfonsoOrderChoice);
+
                 //Methods
 
+            } else if (alfonsoOrderChoice == 3) {
+                System.out.println("Here is the orders for today");
+
+                for (Order e : listOfCurrentOrders) {
+                    System.out.println(e);
+                }
+                //getdOrder(orderIdNumber, alfonsoOrderChoice);
+
+            } else if (alfonsoOrderChoice == 4) {
+                System.out.println("What order do you want to delete, enter the order ID");
+
+                for (Order e : listOfCurrentOrders) {
+                    System.out.println(e);
+                }
+/*
+                int orderToRemove = scanner.nextInt()-1;
+                Order order = new Order(null, orderIdNumber, null, null);
+                listOfCurrentOrders.set(orderToRemove,order);
+                */
+
+
+
+
+
+                listOfCurrentOrders.remove(orderToRemove - listOfCurrentOrders.size());
+
+                 */
+
+                for (Order e : listOfCurrentOrders) {
+                    System.out.println(e);
+                }
+
+
+
             } else {
-                System.out.println("Please press 1 or 2");
+                System.out.println("Please press 1, 2, 3 or 4");
+
             }
 
-            System.out.println(allOrders);
 
         } while (orderIdNumber < 300);
-        System.out.println(allOrders);
+
     }
 
 
     @Override
     public String toString() {
-        return "Order{" +
+        return "Ordernumber " + this.orderId  +
                 "pizzas=" + Arrays.toString(pizzas) +
                 ", orderId=" + orderId +
                 ", orderName='" + orderName + '\'' +

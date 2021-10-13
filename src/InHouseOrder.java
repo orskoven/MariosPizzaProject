@@ -4,10 +4,10 @@ public class InHouseOrder extends Order {
 
     private static Pizza[] pizzas;
 
-    public InHouseOrder(Pizza[] pizzas, int orderId, String orderName, int pickupTime) {
-        super(pizzas, orderId, orderName);
+    public InHouseOrder(Pizza[] pizzas, int orderId, String orderName, String pickupTime) {
+        super(pizzas, orderId, orderName, pickupTime);
     }
-
+/*
     public static Pizza[] getOrder(int orderIdNumber, Order order) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("How many pizzas would you like? - please type a number:");
@@ -31,6 +31,8 @@ public class InHouseOrder extends Order {
         }
         return InHouseOrder.pizzas;
     }
+
+ */
 
     @Override
     public String toString() {

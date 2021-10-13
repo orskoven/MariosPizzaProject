@@ -14,6 +14,9 @@ public class Pizza {
         this.price = price;
     }
 
+    public int getPizzaNumber() {
+        return pizzaNumber;
+    }
 
     @Override
     public String toString() {
@@ -24,6 +27,9 @@ public class Pizza {
                 ", price=" + price +
                 '}';
     }
+
+
+
 }
 
 
